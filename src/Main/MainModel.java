@@ -37,9 +37,30 @@ public class MainModel {
         replies.add("Very doubtful.");
     }
 
-    public String getRandomNumber()
+    public String getRandomReply(String s)
     {
         Random rd = new Random();
-        return replies.get(rd.nextInt(replies.size()));
+
+        if(s.equals(""))
+        {
+            return "Empty, please answer a question.";
+        }
+        else if(s.contains("Softwareentwicklung") && s.contains("?")){
+            return replies.get(rd.nextInt(10));
+        }
+        else if(s.contains("Essen") && s.contains("?"))
+        {
+            return replies.get(rd.nextInt(5)+10);
+        }
+        else if(s.contains("Regen") && s.contains("?"))
+        {
+            return replies.get(rd.nextInt(5)+15);
+        }
+        else if(s.contains("?")){
+            return replies.get(rd.nextInt(replies.size()));
+        }
+        return "An error occured. Make sure to write a ? at the end of your question.";
     }
+
+
 }

@@ -1,6 +1,7 @@
 package Login;
 
 import Main.MainController;
+import Main.MainModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,9 +32,13 @@ public class LoginController implements Initializable {
     Stage stage;
     LoginModel model;
 
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        model = new LoginModel();
     }
 
     public static void show(Stage stage) {
@@ -41,8 +46,11 @@ public class LoginController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("Login.fxml"));
             Parent root = fxmlLoader.load();
 
+            LoginController login = fxmlLoader.getController();
+            login.setStage(stage);
+
             stage.setTitle("Main");
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 600, 300));
             stage.show();
         }
         catch (IOException ex) {
@@ -55,7 +63,7 @@ public class LoginController implements Initializable {
 
     public void forward()
     {
-        MainController.show();
+        MainController.show(new Stage());
         stage.close();
     }
 
