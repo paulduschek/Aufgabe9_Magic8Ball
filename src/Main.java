@@ -1,3 +1,8 @@
+/**
+ * @author Paul Duschek
+ * @version 1.0, 8.12.2020
+ */
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
